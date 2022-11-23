@@ -1,0 +1,57 @@
+
+{% extends 'admn_base.html' %}
+{% block admn_content %}
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admn_site.css' %}" >
+</head>
+    <h4> Site data  update </h4>
+    <div class="sub-container">
+        <form action="" method="POST">
+            <fieldset>
+                <legend>Logo and Favicon :</legend>
+                <div class="item">
+                    <img src="{% static 'img/logo.png'%}"   alt="Logo" >
+                    <input type="file" class="site-item" name="logo" id="logo" accept="image/*"  disabled />
+                    <button onclick="EditItem('logo','cancel-logo')" type="button"> Edit</button>
+                    <button type="button"  class="cancel-btn" id='cancel-logo' onclick="DisableItem('logo','cancel-logo')"> Cancel </button>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Banner :</legend>
+                <div class="item">
+                    <img src="{% static 'img/logo.png'%}" alt="Banner">
+                    <input type="file"  class="site-item" name="banner" id="banner" accept="image/*" disabled />
+                    <button onclick="EditItem('banner','cancel-banner')" type="button"> Edit</button>
+                    <button type="button"  class="cancel-btn" id='cancel-banner' onclick="DisableItem('banner','cancel-banner')"> Cancel </button>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>About us :</legend>
+                <div class="item">
+                    <img src="{% static 'img/logo.png'%}" alt="About us">
+                    <input type="file"  class="site-item" name="aboutus" id="aboutus" accept="image/*"  disabled/>
+                    <button onclick="EditItem('aboutus','cancel-abtus')" type="button"> Edit</button>
+                    <button type="button"  class="cancel-btn" id='cancel-abtus' onclick="DisableItem('aboutus','cancel-abtus')"> Cancel </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+
+    <script>
+            function EditItem(item_id,cancel_btn_id){
+                var item=document.getElementById(item_id);
+                    item.removeAttribute('disabled');
+                    document.getElementById(cancel_btn_id).style.display='flex';
+                }
+
+                function  DisableItem(item_id,cancel_btn_id){
+                    var item=document.getElementById(item_id);
+                    item.disabled = true;
+                    document.getElementById(cancel_btn_id).style.display='none';
+                }
+    </script>
+{% endblock admn_content %}

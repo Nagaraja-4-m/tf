@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - login</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admn_login.css' %}" >
+</head>
+<body>
+    <div class="popup signupform" id="signupform">
+        <h2>Registration</h2>
+        <form action="{% url 'admin_register' %}" method="POST">
+            <input type="email" name="email"  placeholder="Username (email)" required>
+            <input type="text" name="fullname" placeholder="Full name" required>
+            <input type="password" name="password" placeholder="Create Password" required>
+        <div class="buttons">
+            <a href="{% url 'admin_dashboard' %}"><button class="btn cancel" type="button" onclick="hidePopup()">Cancel</button></a>
+            <button class="btn submit" type="submit" > Sign up </button>
+        </div>            
+        </form>
+    </div>
+</body>
+</html>

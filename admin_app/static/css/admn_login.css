@@ -1,0 +1,66 @@
+.popup
+{
+    width: 400px;
+    background:#fff;
+    border-radius: 6px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    text-align: center;
+    padding: 4px 30px 30px;
+    color: #333;
+    transform: translate(-50%,-50%) scale(1);
+    box-shadow: 0px 0px 40px 10px silver;
+}
+
+
+.popup form{
+    justify-items: center;
+}
+
+.popup  input,.popup select {
+    display: block;
+    width: 376px;
+    padding:8px 10px;
+    margin-bottom: 20px;
+    border-style: solid ;
+    font-size:large;
+}
+
+.popup  select{
+    width: 100%;
+}
+
+.buttons
+{
+    display: flex;
+    justify-content:space-evenly;
+}
+
+.btn{
+    padding: 10px 20px;
+    outline: none;
+    border-style:none;
+    color: white;
+    font-weight: 600;
+    font-size:16px;
+    cursor: pointer;
+    box-shadow: 0px 0px 1px 1px gray;
+}
+
+.cancel{
+    background-color: red;
+}
+.cancel:hover{
+    background-color: rgb(186, 21, 21);
+}
+.submit{
+    background-color:rgb(53, 163, 51);
+}
+.submit:hover{
+    background-color:rgb(15, 121, 13);
+}
+
+h2,p{
+    text-align: center;
+}

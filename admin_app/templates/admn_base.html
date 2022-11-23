@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admn_base.css' %}" >
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+</head>
+<body>
+        <!-- NAVIGATION BAR -->
+        <nav>
+            <div class="navbar">
+                <div class="left_corner">
+                    <h3> <a href="{% url 'admin_dashboard' %}" >ADMIN  </a> </h3>
+                </div>
+                {% if true == true %}
+                    <div class="right_corner">
+                        <ul class="authenticated">
+                        <li> <a> {{ logged_user.fullname }} NAME</a></li>
+                        <li> <a href="{% url 'admin_logout' %}"> Logout </a></li>
+                        </ul>
+                    </div>
+                {% else %}
+                    <div class="right_corner">
+                        <ul class="un-authenticated">
+                            <li> <a onclick="showPopup('login')" > Login </a></li>
+                            <!-- <li> <a onclick="showPopup('signup')"> Sign up </a></li> -->
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </nav>
+        <!-- NAVIGATION BAR ENDS-->
+
+        
+        <div>
+            <!-- logged_user.isAuthenticated -->
+            {% if true == true %}
+            <div class="sidebar">
+            <!-- MENU BAR  -->
+            <!-- <div class="sidebar"> -->
+                    <a href="{% url 'admin_dashboard' %}"> Dashboard</a>
+                    <a href="{% url 'admin_sitepage' %}" > Site Update</a>
+                    <a href="{% url 'admin_productpage' %}"> Product Card</a>
+                    <a href="{% url 'admin_socialmedia_contact_page' %}"> Media & Contact </a>
+
+                
+            </div>
+            <div class="content admin-container">
+                {% block admn_content %}
+
+                {% endblock admn_content %}
+            </div>
+        
+            {% else %}
+                <h2> Welcome! </h2>
+                <p> Please Login  to use. </p>
+            {% endif %}
+        </div>
+</body>
+</html>

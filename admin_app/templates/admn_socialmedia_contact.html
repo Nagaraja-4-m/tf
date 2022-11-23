@@ -1,0 +1,99 @@
+
+{% extends 'admn_base.html' %}
+{% block admn_content %}
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admn_site.css' %}" >
+</head>
+    <h4> Social media data  update </h4>
+    <div class="sub-container">
+        <form action="" method="POST">
+            <fieldset>
+                <legend>FaceBook:</legend>
+                <div class="item">
+                    <input type="ulr" class="site-item" name="facebook" id="facebook" value="some link"  placeholder="paste url here" disabled />
+                    <!-- <button type="button"  class="submit-btn" id='submit'> Update </button> -->
+                    <button onclick="EditItem('facebook','cancel-facebook')" type="button"> Edit</button>
+                    <button type="button"  class="cancel-btn" id='cancel-facebook' onclick="DisableItem('facebook','cancel-facebook')"> Cancel </button>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Linkedin:</legend>
+                <div class="item">
+                    <input type="ulr" class="site-item" name="linkedin" id="linkedin" value="some link"  placeholder="paste url here" disabled />
+                    <!-- <button type="button"  class="submit-btn" id='submit'> Update </button> -->
+                    <button onclick="EditItem('linkedin','cancel-linkedin')" type="button"> Edit</button>
+                    <button type="button"  class="cancel-btn" id='cancel-linkedin' onclick="DisableItem('linkedin','cancel-linkedin')"> Cancel </button>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Whatsapp:</legend>
+                <div class="item">
+                    <input type="ulr" class="site-item" name="whatsapp" id="whatsapp" value="some link"  placeholder="Whatsapp number" disabled />
+                    <!-- <button type="button"  class="submit-btn" id='submit'> Update </button> -->
+                    <button onclick="EditItem('whatsapp','cancel-whatsapp')" type="button"> Edit</button>
+                    <button type="button"  class="cancel-btn" id='cancel-whatsapp' onclick="DisableItem('whatsapp','cancel-whatsapp')"> Cancel </button>
+                </div>
+            </fieldset>            <fieldset>
+                <legend>Email:</legend>
+                <div class="item">
+                    <input type="ulr" class="site-item" name="linkedin" id="linkedin" value="some link"  placeholder="paste url here" disabled />
+                    <!-- <button type="button"  class="submit-btn" id='submit'> Update </button> -->
+                    <button onclick="EditItem('linkedin','cancel-linkedin')" type="button"> Edit</button>
+                    <button type="button"  class="cancel-btn" id='cancel-linkedin' onclick="DisableItem('linkedin','cancel-linkedin')"> Cancel </button>
+                </div>
+            </fieldset>            <fieldset>
+                <legend>Linkedin:</legend>
+                <div class="item">
+                    <input type="ulr" class="site-item" name="linkedin" id="linkedin" value="some link"  placeholder="paste url here" disabled />
+                    <!-- <button type="button"  class="submit-btn" id='submit'> Update </button> -->
+                    <button onclick="EditItem('linkedin','cancel-linkedin')" type="button"> Edit</button>
+                    <button type="button"  class="cancel-btn" id='cancel-linkedin' onclick="DisableItem('linkedin','cancel-linkedin')"> Cancel </button>
+                </div>
+            </fieldset>            <fieldset>
+                <legend>Linkedin:</legend>
+                <div class="item">
+                    <input type="ulr" class="site-item" name="linkedin" id="linkedin" value="some link"  placeholder="paste url here" disabled />
+                    <!-- <button type="button"  class="submit-btn" id='submit'> Update </button> -->
+                    <button onclick="EditItem('linkedin','cancel-linkedin')" type="button"> Edit</button>
+                    <button type="button"  class="cancel-btn" id='cancel-linkedin' onclick="DisableItem('linkedin','cancel-linkedin')"> Cancel </button>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Banner :</legend>
+                <div class="item">
+                    <img src="{% static 'img/logo.png'%}" alt="Banner">
+                    <input type="file"  class="site-item" name="banner" id="banner" accept="image/*" disabled />
+                    <button onclick="EditItem('banner','cancel-banner')" type="button"> Edit</button>
+                    <button type="button"  class="cancel-btn" id='cancel-banner' onclick="DisableItem('banner','cancel-banner')"> Cancel </button>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>About us :</legend>
+                <div class="item">
+                    <img src="{% static 'img/logo.png'%}" alt="About us">
+                    <input type="file"  class="site-item" name="aboutus" id="aboutus" accept="image/*"  disabled/>
+                    <button onclick="EditItem('aboutus','cancel-abtus')" type="button"> Edit</button>
+                    <button type="button"  class="cancel-btn" id='cancel-abtus' onclick="DisableItem('aboutus','cancel-abtus')"> Cancel </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+
+    <script>
+            function EditItem(item_id,cancel_btn_id){
+                var item=document.getElementById(item_id);
+                    item.removeAttribute('disabled');
+                    document.getElementById(cancel_btn_id).style.display='flex';
+                }
+
+                function  DisableItem(item_id,cancel_btn_id){
+                    var item=document.getElementById(item_id);
+                    item.disabled = true;
+                    document.getElementById(cancel_btn_id).style.display='none';
+                }
+    </script>
+{% endblock admn_content %}

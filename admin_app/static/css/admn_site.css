@@ -1,0 +1,20 @@
+.cancel-btn{
+    display: none;
+}
+
+fieldset{
+    margin:16px 0px;
+}
+.item{
+    display:inline-flex;
+    gap: 10px;
+}
+
+.item > img{
+    max-width: 100px;
+    min-height: 10px;
+}
+
+.item > img:hover{
+
+}

@@ -1,0 +1,105 @@
+
+{% extends 'admn_base.html' %}
+{% block admn_content %}
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/admn_product.css' %}" >
+</head>
+    <h4> Products card update </h4>
+    <button style="float:right" onclick="AddNewCard()"> Add Product Card </button>
+    <div class="add-product popup" id="add-product-card">     
+        <br>
+        <h4> Add New Product </h4>
+        <form class="form-inline" action="{% url 'admin_productpage' %}" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="heighliter">heighliter:</label>
+                <input class="form-control" type="text" name="heighliter" id="heighliter" placeholder="Heighliter" required>
+            </div>
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input class="form-control" type="text" name="title" placeholder="title( strat with '-')" id="title" required/>
+            </div>
+            <div class="form-group">
+                <label for="img">Product img:</label>
+                <input  class="form-control" type="file" name="img" id="img"  accept="image/*"  required/>
+            </div>
+            <div class="form-group">
+                <br>
+                <br>
+
+                <button  class="btn btn-danger" type="button" onclick="HideAddNewCard()">Cancel</button>
+                <input class="btn btn-success" type="submit" value="Add card">
+            </div>
+        </form>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    {% if products %}
+        <div class="table-responsive">
+            <table class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                    <th> Sl. No</th>
+                    <th>Highlight</th>
+                    <th>Title</th>
+                    <th>Image</th>
+                    <th> Action </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <form action="products/{{ product.id }}" method="POST" enctype="multipart/form-data">
+                    <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td> <input  class="{{ product.id }}" type="text" name="heighliter" value="{{ product.heighliter }}"  disabled/></td>
+                    <td><input class="{{ product.id }}" type="text" name="title" value="{{ product.title }}"  disabled/> </td>
+                    <td><input class="{{ product.id }}" type="file" name="img"  value="{{ product.filename }}" disabled/> <img src="{% static  'img/' %}{{product.filename}}" alt="Image"></td>
+                    <td><button  class="btn btn-success" type="button" id="{{ product.id }}" onclick='EditItem({{ product.id }},"cancel-"+{{ product.id }},"update-"+{{ product.id }} )' >Edit</button>
+                    <button type="button"  class="cancel-btn" id='cancel-{{ product.id }}' onclick='DisableItem({{ product.id }},"cancel-"+{{ product.id }},"update-"+{{ product.id }})'> Cancel </button>
+                    <button type="submit"  class="cancel-btn" id='update-{{ product.id }}'> Update </button>
+
+                </td>
+                    </tr>
+                </form>
+                    {% endfor %}
+                   </tbody> 
+            </table>
+        </div>
+    {% else %}
+        <p> There are no products currently. </p>        
+    {% endif %}
+
+    <script>
+        var add_card=document.getElementById('add-product-card');
+        function AddNewCard(){
+            add_card.style.display='block';
+        }
+        function HideAddNewCard(){
+            add_card.style.display='none';
+        }
+        function EditItem(item_id,cancel_btn_id,update_btn_id){
+            var items=document.getElementsByClassName(item_id);
+            for ( let item of items ){
+                item.removeAttribute('disabled');
+            }
+            document.getElementById(item_id).style.display='none';
+            document.getElementById(cancel_btn_id).style.display='flex';
+            document.getElementById(update_btn_id).style.display='flex';
+            console.log(item_id,cancel_btn_id);
+            }
+
+            function  DisableItem(item_id,cancel_btn_id,update_btn_id){
+                var items=document.getElementsByClassName(item_id);
+                for ( let item of items ){
+                    item.disabled = true;
+                }
+                document.getElementById(cancel_btn_id).style.display='none';
+                document.getElementById(update_btn_id).style.display='none';
+                document.getElementById(item_id).style.display='flex';
+            }
+    </script>
+{% endblock admn_content %}
